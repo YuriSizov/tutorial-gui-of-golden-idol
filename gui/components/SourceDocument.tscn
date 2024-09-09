@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://rju8y304dhgf"]
+
+[ext_resource type="Script" path="res://gui/components/SourceClueEffect.gd" id="1_huuid"]
+[ext_resource type="Script" path="res://gui/components/SourceDocument.gd" id="1_sr8c0"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_cxu1p"]
+resource_local_to_scene = true
+script = ExtResource("1_huuid")
+
+[node name="SourceDocument" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_cxu1p")]
+script = ExtResource("1_sr8c0")

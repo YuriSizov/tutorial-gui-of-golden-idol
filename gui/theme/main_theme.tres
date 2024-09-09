@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bcq5op71tb6y3"]
+
+[ext_resource type="FontVariation" uid="uid://cmbrkpemdmnq2" path="res://gui/theme/fonts/main_font_regular.tres" id="1_5pd4e"]
+[ext_resource type="FontVariation" uid="uid://c17w6wqbyndkr" path="res://gui/theme/fonts/main_font_bold.tres" id="1_atdpv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smm15"]
+content_margin_left = 12.0
+content_margin_top = 2.0
+content_margin_right = 12.0
+content_margin_bottom = 2.0
+bg_color = Color(0.820453, 0.691631, 0.575591, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.232221, 0.143492, 0.0737829, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+default_font = ExtResource("1_5pd4e")
+default_font_size = 18
+DossierResultLabel/base_type = &"Label"
+DossierResultLabel/colors/failure_color = Color(0.563916, 0.156259, 0.220113, 1)
+DossierResultLabel/colors/font_color = Color(0.488054, 0.488054, 0.488054, 1)
+DossierResultLabel/colors/success_color = Color(0.188874, 0.510223, 0.32911, 1)
+DossierResultLabel/font_sizes/font_size = 20
+DossierResultLabel/fonts/font = ExtResource("1_atdpv")
+MainContainer/base_type = &"MarginContainer"
+MainContainer/constants/margin_bottom = 16
+MainContainer/constants/margin_left = 16
+MainContainer/constants/margin_right = 16
+MainContainer/constants/margin_top = 16
+RichTextLabel/colors/clue_color = Color(0.79805, 0.465586, 0.0417891, 1)
+RichTextLabel/colors/default_color = Color(0.00296469, 0.00356039, 0.00474534, 1)
+RichTextLabel/constants/underline_size = 2
+SourceLinkLabel/base_type = &"Label"
+SourceLinkLabel/colors/font_color = Color(0.50692, 0.50692, 0.50692, 1)
+WordBankEntry/base_type = &"Label"
+WordBankEntry/colors/font_color = Color(0, 0, 0, 1)
+WordBankEntry/styles/normal = SubResource("StyleBoxFlat_smm15")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blhrua7ucmnjo"]
+
+[ext_resource type="Script" path="res://gui/layout/WordBank.gd" id="1_a24hp"]
+
+[node name="WordBank" type="HFlowContainer"]
+custom_minimum_size = Vector2(0, 140)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_a24hp")

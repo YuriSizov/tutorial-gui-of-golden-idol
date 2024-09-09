@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg3nmn4wssli0"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_qsvhm"]
+[ext_resource type="PackedScene" uid="uid://rqaqsg68pdaj" path="res://gui/layout/Sources.tscn" id="2_ugcul"]
+[ext_resource type="PackedScene" uid="uid://dd5erp5kcxi1b" path="res://gui/layout/Dossier.tscn" id="3_ud6g3"]
+[ext_resource type="PackedScene" uid="uid://blhrua7ucmnjo" path="res://gui/layout/WordBank.tscn" id="4_fabkj"]
+
+[node name="Main" type="MarginContainer"]
+custom_minimum_size = Vector2(800, 600)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainContainer"
+script = ExtResource("1_qsvhm")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ResearchArea" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Sources" parent="Layout/ResearchArea" instance=ExtResource("2_ugcul")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dossier" parent="Layout/ResearchArea" instance=ExtResource("3_ud6g3")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WordBank" parent="Layout" instance=ExtResource("4_fabkj")]
+layout_mode = 2

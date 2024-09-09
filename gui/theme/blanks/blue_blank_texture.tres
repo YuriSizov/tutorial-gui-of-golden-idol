@@ -1,0 +1,26 @@
+[gd_resource type="Texture2D" script_class="StyleTexture" load_steps=3 format=3 uid="uid://b41yr2jje7cm3"]
+
+[ext_resource type="Script" path="res://gui/components/StyleTexture.gd" id="1_4trjd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c6g5"]
+content_margin_left = 12.0
+content_margin_top = 2.0
+content_margin_right = 12.0
+content_margin_bottom = 2.0
+bg_color = Color(0.336193, 0.64196, 0.789011, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_4trjd")
+stylebox = SubResource("StyleBoxFlat_6c6g5")
+width = 160
+height = 32

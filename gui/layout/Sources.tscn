@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://rqaqsg68pdaj"]
+
+[ext_resource type="PackedScene" uid="uid://rju8y304dhgf" path="res://gui/components/SourceDocument.tscn" id="1_18ptw"]
+[ext_resource type="Script" path="res://gui/components/SourceClueEffect.gd" id="2_luk3k"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_uwv43"]
+resource_local_to_scene = true
+script = ExtResource("2_luk3k")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_q5fm7"]
+resource_local_to_scene = true
+script = ExtResource("2_luk3k")
+
+[node name="Sources" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="FirstSource" parent="." instance=ExtResource("1_18ptw")]
+layout_mode = 2
+text = "The cases — there are a [clue]dozen[/clue] — immediately grow more elaborate and intricate, involving more suspects, murkier [clue]motives[/clue], tons of unrelated clues, and plenty of secrets.
+Clues can come not just from the [clue]words[/clue] you gather but from the details of oddly illustrated scenes themselves."
+custom_effects = [SubResource("RichTextEffect_uwv43")]
+
+[node name="FirstSourceLabel" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"SourceLinkLabel"
+text = "https://www.pcgamer.com/the-case-of-the-golden-idol-review/"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondSource" parent="." instance=ExtResource("1_18ptw")]
+layout_mode = 2
+text = "[clue]Color[/clue] [clue]Gray[/clue] Games simply cast you as a kind of detached, omniscient [clue]detective[/clue] figure, able to swoop into these scenes and observe them objectively without having any stake in the [clue]events[/clue] themselves."
+custom_effects = [SubResource("RichTextEffect_uwv43")]
+
+[node name="SecondSourceLabel" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"SourceLinkLabel"
+text = "https://www.rockpapershotgun.com/the-case-of-the-golden-idol-review
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ThirdSource" parent="." instance=ExtResource("1_18ptw")]
+layout_mode = 2
+text = "As with all [clue]point-and-click[/clue] types, there's a neat sliver of humor running through the writing - droll one-liners and [clue]comical[/clue] set-ups that maintain a [clue]smart[/clue] sense of levity throughout the game.
+Even working with largely static character art, the devs manage to imbue the [clue]scenarios[/clue] with a bristling sense of tension - there are people getting killed, and everyone is right to be on edge."
+custom_effects = [SubResource("RichTextEffect_q5fm7")]
+
+[node name="ThirdSourceLabel" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"SourceLinkLabel"
+text = "https://www.rockpapershotgun.com/the-case-of-the-golden-idol-review
+"
+horizontal_alignment = 2
+vertical_alignment = 1

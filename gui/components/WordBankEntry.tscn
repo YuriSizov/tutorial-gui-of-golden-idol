@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://kt61571tviuq"]
+
+[node name="WordBankEntry" type="Label"]
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_type_variation = &"WordBankEntry"
+text = "Entry Text"

@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cmbrkpemdmnq2"]
+
+[ext_resource type="FontFile" uid="uid://ce35uqvkdkhya" path="res://assets/fonts/NotoSans-VariableFont_wdth,wght.ttf" id="1_cnv8m"]
+
+[resource]
+base_font = ExtResource("1_cnv8m")
+variation_opentype = {
+2003072104: 100,
+2003265652: 600
+}
