@@ -4,19 +4,25 @@ class_name DossierDocument extends RichTextLabel
 const BLUE_BLANK_TEXTURE := preload("res://gui/theme/blanks/blue_blank_texture.tres")
 
 var _blanks: Array[DossierBlank] = []
+var _blanks_index_map: Dictionary = {}
+var _blanks_parsed: bool = false
 var _blanks_text_buffer: TextLine = TextLine.new()
 
 @onready var _result_label: Label = %ResultLabel
 
 
 func _ready() -> void:
+	# Hook into the rich text effect that provides us with blank data.
 	var dossier_blank_effect: DossierBlankEffect = custom_effects[0]
 	dossier_blank_effect.blank_found.connect(_handle_new_blank)
 	
 	_validate_dossier()
 	
+	# Update clues positional data when the element is resized.
+	resized.connect(_prepare_blanks.bind(true))
+	
 	if not Engine.is_editor_hint():
-		Controller.level_initializing.connect(_prepare_blanks)
+		Controller.level_initializing.connect(_prepare_blanks.bind(false))
 
 
 func _draw() -> void:
@@ -39,8 +45,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mb := event as InputEventMouseButton
 		
-		# To have more control and make the layout simpler we don't use meta/url tags,
-		# so we must emulate their behavior by handling clicks ourselves.
+		# Handle right clicks on blank areas to clear the assigned value.
 		
 		if mb.pressed && mb.button_index == MOUSE_BUTTON_RIGHT:
 			for blank_data in _blanks:
@@ -50,9 +55,13 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	# Only allow this one type of drag data. This can be customized with more
+	# checks, like if the drag data and the drop area have the same "kind"
+	# (e.g. name, object, verb, etc).
 	if data is not WordBank.WordBankDragData:
 		return false
 	
+	# Find out if we're hovering over one of the blanks.
 	for blank_data in _blanks:
 		if blank_data.rect.has_point(at_position):
 			return true
@@ -61,6 +70,9 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
+	# This method is the same as _can_drop_data(), but it actually accepts the data.
+	# You can cache the results in _can_drop_data() to process this slightly faster.
+	
 	if data is not WordBank.WordBankDragData:
 		return
 	
@@ -73,8 +85,11 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 
 # Blank management.
 
-func _prepare_blanks() -> void:
-	_blanks.clear()
+func _prepare_blanks(update_only: bool) -> void:
+	if not update_only:
+		_blanks.clear()
+		_blanks_index_map.clear()
+		_blanks_parsed = false
 	
 	# We want to hijack the effect processing to extract some data for gameplay
 	# purposes. We have to account for the fact that the effect is being processed
@@ -89,14 +104,17 @@ func _prepare_blanks() -> void:
 
 
 func _process_blanks() -> void:
+	# Finish the processing initiated by _prepare_blanks().
+	
 	var dossier_blank_effect: DossierBlankEffect = custom_effects[0]
 	
 	if dossier_blank_effect.parsing_blanks:
 		dossier_blank_effect.parsing_blanks = false
+		_blanks_parsed = true
 		_validate_dossier()
 
 
-func _handle_new_blank(blank_text: String, at_position: Vector2) -> void:
+func _handle_new_blank(from_index: int, to_index: int, blank_text: String, at_position: Vector2) -> void:
 	# The RichTextLabel node doesn't expose a way to access its underlying text buffers. We
 	# use our own buffer that takes the string value and font properties, and gives us a good
 	# estimate for the size of the rendered text.
@@ -111,8 +129,15 @@ func _handle_new_blank(blank_text: String, at_position: Vector2) -> void:
 	var blank_data := DossierBlank.new()
 	blank_data.allowed_text = blank_text.split(";", false)
 	blank_data.rect = blank_rect
+	blank_data.span = Vector2i(from_index, to_index)
+	
+	# Only updating data now, blanks already registered.
+	if _blanks_parsed:
+		_blanks_index_map[blank_data.span].rect = blank_data.rect
+		return
 	
 	_blanks.push_back(blank_data)
+	_blanks_index_map[blank_data.span] = blank_data
 	prints("new blank", blank_data)
 	
 	if not Engine.is_editor_hint():
@@ -157,6 +182,7 @@ func _validate_dossier() -> void:
 class DossierBlank:
 	var allowed_text: PackedStringArray = PackedStringArray()
 	var rect: Rect2 = Rect2()
+	var span: Vector2i = Vector2i(-1, -1)
 	
 	var _assigned_text: String = ""
 	var text_buffer: TextLine = TextLine.new()

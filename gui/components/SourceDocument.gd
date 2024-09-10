@@ -8,9 +8,11 @@ var _clues_text_buffer: TextLine = TextLine.new()
 
 
 func _ready() -> void:
+	# Hook into the rich text effect that provides us with clue data.
 	var source_clue_effect: SourceClueEffect = custom_effects[0]
 	source_clue_effect.clue_found.connect(_handle_new_clue)
 	
+	# Update clues positional data when the element is resized.
 	resized.connect(_prepare_clues.bind(true))
 	
 	if not Engine.is_editor_hint():
@@ -89,6 +91,8 @@ func _prepare_clues(update_only: bool) -> void:
 
 
 func _process_clues() -> void:
+	# Finish the processing initiated by _prepare_clues().
+	
 	var source_clue_effect: SourceClueEffect = custom_effects[0]
 	
 	if source_clue_effect.parsing_clues:

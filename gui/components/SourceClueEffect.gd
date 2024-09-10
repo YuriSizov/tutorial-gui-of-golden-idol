@@ -1,3 +1,9 @@
+# Implements the [clue][/clue] tag for the RichTextLabel node.
+#
+# This tag has no arguments and contains the word that is registered as a clue.
+# Clues are highlighted and underlined, although the underline is removed when
+# the clue is acquired for the first time. Clues are clickable.
+
 @tool
 class_name SourceClueEffect extends RichTextEffect
 
@@ -13,11 +19,11 @@ var _current_clue_position: Vector2 = Vector2(-1.0, -1.0)
 
 
 func _process_custom_fx(char_data: CharFXTransform) -> bool:
+	# Do data parsing while drawing and updating effects, if this flag is enabled.
 	if parsing_clues:
 		_process_clue(char_data)
 	
 	char_data.color = ThemeDB.get_project_theme().get_color("clue_color", "RichTextLabel")
-	
 	return true
 
 

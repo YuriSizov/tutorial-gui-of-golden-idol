@@ -1,3 +1,12 @@
+# This is a custom texture type that can draw a stylebox, namely StyleBoxFlat
+# in any place where a texture can be drawn normally. This class is provided
+# for convenience, as we need a texture for RichTextLabel nodes, and a stylebox
+# is the easiest way to have a parametric texture for a panel in the engine.
+#
+# In a real project you will probably use some nine-patch asset, although that
+# also doesn't have a dedicated texture type... Which can also be worked around
+# with a solution such as below.
+
 @tool
 class_name StyleTexture extends Texture2D
 

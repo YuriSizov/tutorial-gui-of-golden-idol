@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ddr5vavepsu8v" path="res://gui/components/DossierDocument.tscn" id="1_qjgup"]
 [ext_resource type="Script" path="res://gui/components/DossierBlankEffect.gd" id="2_6u0ck"]
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_2tdpl"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_3iwsh"]
 resource_local_to_scene = true
 script = ExtResource("2_6u0ck")
 
@@ -18,4 +18,4 @@ theme_override_constants/separation = 20
 [node name="DossierDocument" parent="." instance=ExtResource("1_qjgup")]
 layout_mode = 2
 text = "The Case of the Golden Idol is a [blank ?=detective;point-and-click][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] [blank ?=detective;point-and-click][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] game by [blank ?=Color][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] [blank ?=Gray][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] Games, featuring a [blank ?=dozen][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] of murderous [blank ?=scenarios][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank]."
-custom_effects = [SubResource("RichTextEffect_2tdpl")]
+custom_effects = [SubResource("RichTextEffect_3iwsh")]
