@@ -13,8 +13,9 @@ each scenario.
 In this tutorial you will learn how to utilize `RichTextLabel`, `RichTextEffect`,
 and the built-in drag'n'drop system in Godot to implement this core mechanic.
 
-**[Read the complete tutorial now](TUTORIAL.MD)**, or simply check out this
-project and _investigate_ the code yourself!
+**[Read the complete tutorial now!](TUTORIAL.md)**
+
+Or simply check out this project using `git` and _investigate_ the code yourself!
 
 _This project is compatible with **Godot 4.3**._
 

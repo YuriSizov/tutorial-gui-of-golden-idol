@@ -13,6 +13,8 @@ It's a really wonderful game, so be sure to check it out, if you haven't! And it
 
 In the following paragraphs I will talk about not only the specific solution to the presented problem, but also how it has come to be, how such decisions are made in practice.
 
+![](tutorial/tutorial-overview.png)
+
 
 ### Chapter II: Considerations
 
